@@ -1,0 +1,59 @@
+{
+  "name": "webpack-workflow",
+  "version": "1.0.0",
+  "description": "A solid webpack workflow",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/coskunbaris/frontend-workflow.git"
+  },
+  "author": "coskunbaris <coskun.bris@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "webpack --mode development --env.env=dev",
+    "build": "webpack --mode production --env.env=prod",
+    "debug": "webpack-dev-server --open --mode development --env.env=dev"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-react": "^6.24.1",
+    "bundle-loader": "^0.5.6",
+    "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.1",
+    "css-loader": "^0.28.10",
+    "file-loader": "^1.1.11",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.0.6",
+    "img-loader": "^2.0.1",
+    "json-loader": "^0.5.7",
+    "json5-loader": "^1.0.1",
+    "less": "^3.0.1",
+    "less-loader": "^4.1.0",
+    "mini-css-extract-plugin": "^0.4.0",
+    "node-sass": "^4.7.2",
+    "postcss-loader": "^2.1.3",
+    "pug-html-loader": "^1.1.5",
+    "purify-css": "^1.2.5",
+    "purifycss-webpack": "^0.7.0",
+    "raw-loader": "^0.5.1",
+    "resolve-url-loader": "^2.3.0",
+    "sass-loader": "^6.0.7",
+    "style-loader": "^0.20.3",
+    "uglifyjs-webpack-plugin": "^1.2.4",
+    "url-loader": "^1.0.1",
+    "webpack": "^4.4.1",
+    "webpack-cli": "^2.0.13",
+    "webpack-dev-server": "^3.1.1",
+    "webpack-jarvis": "^0.3.2",
+    "webpack-merge": "^4.1.2"
+  },
+  "dependencies": {
+    "gsap": "^1.20.4",
+    "howler": "^2.0.9",
+    "sass-toolset": "^1.0.0"
+  }
+}

@@ -1,0 +1,45 @@
+ 
+Author
+Name        : Coskun Baris
+Contact     : coskun.bris@gmail.com
+Twitter     : @_coskunbaris
+Github      : coskunbaris
+Geolocation : Sweden
+
+Technologies, Tools and Patterns
+
+Project based on HTML5, CSS3 and Ecmascript6
+
+Standards         : HTML5, CSS3, Ecmascript6
+
+Template Engine   : Pug
+
+CSS Tools         : Sass
+                    PostCSS
+                    Autoprefixer
+
+CSS Methodology   : BEM
+
+JS Tools          : Babel
+
+Building Tools    : Webpack                    
+                    Yarn
+                    Jarvis
+
+Code Environment  : Visual Studio Code
+                    Prettier                    
+
+Boilerplate       : Webpack Workflow, (https://github.com/coskunbaris/Webpack-workflow)
+
+Libraries/Plugins : HowlerJS
+                    Font Awesome
+                    Sass Toolset, (https://github.com/coskunbaris/sass-toolset)
+
+Font              : Lobster, Google Fonts
+
+Sound             : MAYA FILIPIČ - Stories from Emona I (2008), www.jamendo.com
+
+
+Design Inspired by https://dribbble.com/CharlesPatterson
+
+Thanks to Charles
