@@ -1,21 +1,26 @@
-// Sass Toolset
-@import "../../node_modules/sass-toolset/sass-media-query/_sass-media-query.scss";
-
-.player {
-  width: 90vw;
-  position: relative;
-
-  @include query(md) {
-    width: 50vw;
-  }
+/* Scene */
+.scene {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
 
-.player_info {
-  $radius: 10px;
+/* Player */
+.player {
+  width: 600px;
+  max-width: 90vw;
+  position: relative;
+}
 
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+/* Player Status : Song, Artist, Progressbar */
+.status {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-template-areas: ". information-content";
 
   width: 95%;
   height: 100%;
@@ -29,120 +34,121 @@
   z-index: -1;
   margin: auto;
 
-  background: floralwhite;
-  border-top-left-radius: $radius;
-  border-top-right-radius: $radius;
+  background-color: $white-darker;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 
   transition: bottom 0.6s linear;
   will-change: bottom;
 
+  // Parental State
   .player.is-playing & {
-    bottom: 100%;
+    bottom: 98%;
   }
 
-  &_inner {
-    width: 60%;
+  &__inner {
+    grid-area: information-content;
   }
 }
 
-.player_title {
-  color: $font_color--title;
+/* Title: Formerly Song Name */
+.status__title {
+  color: $purple;
   font-size: 1rem;
   text-transform: capitalize;
 
-  @include query(only-xs) {
+  @media only screen and (max-width: 576px) {
     margin: 0;
   }
 }
 
-.player_subtitle {
-  color: $font_color--title;
+/* Subtitle: Formerly Artist Name */
+.status__subtitle {
+  color: $purple;
   font-size: 0.8rem;
   font-weight: 400;
   text-transform: capitalize;
 
-  @include query(only-xs) {
+  @media only screen and (max-width: 576px) {
     margin: 0;
   }
 }
 
-.player_progressbar {
-  $radius: 5px;
-
-  height: 0.6rem;
-  position: relative;
+/* Progressbar */
+.progressbar {
+  width: 100%;
+  height: .7rem;
   overflow: hidden;
+  backface-visibility: hidden;
   margin-top: 1rem;
+  border-radius: 5px;
+  background: $pink;
 
-  border-radius: $radius;
-  background: $pink--level-3;
-
-  @at-root {
-    .player_progressbar_progress {
-      width: 0;
-      height: 100%;
-      background: $purple--level-2;
-      border-radius: $radius;
-
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
+  @media only screen and (max-width: 576px) {
+    margin-top: .8rem;
   }
 }
 
-.player_console {
-  display: flex;
-  justify-content: space-between;
+/* Progressbar Progress (Inner) */
+.progressbar__progress {
+  width: 0;
+  height: 100%;
+  background: $purple;
+  will-change: width;
+}
 
+/* Console : Cover and Control Buttons */
+.console {
+  display: grid;
+  grid-template-areas: "cover control-buttons";
+  grid-template-columns: 30% 70%;
   border-radius: 10px;
-  background: #fff;
+  background-color: $white;
   box-shadow: 0 50px 100px -10px rgba(0, 0, 0, 0.3);
 }
 
-.player_cover {
-  display: flex;
-  width: 20%;
-  margin-left: 2rem;
-  position: relative;
+/* Song Cover (Wrapper for cover thumbnail) */
+.cover {
+  grid-area: cover; 
+}
 
-  transform: translateY(-5%) scale(1.2);
-  transform-origin: 50% 100%;
-  transition: all 0.5s linear;
-  will-change: transform;
+/* Cover Thumbnail */
+.cover__thumbnail {
+  $thumbnail-size: 70%;
+  $cover-circle-size: $thumbnail-size / 5;
 
-  &.is-animated {
-    transform: translateY(-7%) scale(1.3);
+  width: $thumbnail-size;
+  height: 100%;
+  margin: 0 auto;
+  font-size: 0;
+  @extend %cover-animation-setup;
 
-    img {
-      animation-play-state: running;
-    }
-  }
-
+  // Parental State
   .player.is-playing & {
-    @extend .is-animated;
-  }
-
-  img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    animation: rotating 10s linear infinite paused;
+    @extend %cover-animation-start;
   }
 
   &::after {
     content: "";
-    width: 20%;
-    height: 20%;
-    background: #fff;
+    width: $cover-circle-size;
+    height: $cover-circle-size;
+    background: $white;
     border-radius: 50%;
-
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
 
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    animation: rotating 10s linear infinite paused;
+    will-change: transform;
+  }
+
+  // Rotating Animation
   @at-root {
     @keyframes rotating {
       from {
@@ -155,33 +161,65 @@
   }
 }
 
-.player_buttons {
+/* Control Buttons : Play, Pause, Forward, Backward */
+.control__buttons {
+  grid-area: control-buttons;
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex: 1;
+}
 
-  @at-root {
-    .player_button {
-      padding: 1rem 2rem;
-      border-radius: 5px;
-      background: $button__bg;
-      transition: all 0.3s ease-in-out;
-      cursor: pointer;
+/* Control Button */
+.control__button {  
+  @extend %button-reset;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: transparent;
+  transition: background-color 0.3s ease-in-out;
+  will-change: background-color;  
 
-      &:hover,
-      &.is-hover {
-        background: $button__bg--hover;
+  &:hover {
+    background-color: $gray;
 
-        i {
-          color: $button__color--hover;
-        }
-      }
-
-      i {
-        color: $button__color;
-        font-size: 2rem;
-      }
+    i { 
+      color: $white 
     }
   }
+
+  i {
+    color: $gray;
+    font-size: 2rem;    
+    will-change: color;
+  }
+}
+
+/* Loading Screen */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: $pink-darker;
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+  will-change: opacity;
+
+  &.is-loaded {
+    opacity: 0;
+  }
+}
+
+/* Loading Text */
+.loading__text {
+  font-size: 12vw;
+  font-style: italic;
+  color: $white-darker;
 }
