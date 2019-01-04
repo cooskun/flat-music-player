@@ -24,10 +24,9 @@ JS Tools          : Babel
 
 Building Tools    : Webpack                    
                     Yarn
-                    Jarvis
 
 Code Environment  : Visual Studio Code
-                    Prettier                    
+                    Prettier                  
 
 Boilerplate       : Webpack Workflow, (https://github.com/coskunbaris/Webpack-workflow)
 

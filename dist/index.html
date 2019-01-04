@@ -9,24 +9,31 @@
     <title>Flat Music Player</title>
   <link href="css/app.css" rel="stylesheet"></head>
   <body>
-    <section class="player js-player">
-      <div class="player_info">
-        <div class="player_info_inner">
-          <h1 class="player_title">Stories from Emona I</h1>
-          <h2 class="player_subtitle">maya filipic</h2>
-          <div class="player_progressbar">
-            <div class="player_progressbar_progress js-progress"></div>
+    <section class="loading js-loading">
+      <h2 class="loading__text">LOADING...</h2>
+    </section>
+    <main class="scene">
+      <section class="player js-player">
+        <div class="status">
+          <div class="status__inner">
+            <h1 class="status__title">Stories from Emona I</h1>
+            <h2 class="status__subtitle">maya filipic</h2>
+            <div class="progressbar">
+              <div class="progressbar__progress js-progress"></div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="player_console">
-        <div class="player_cover"><img src="img/cover.jpg" alt="MAYA FILIPIČ - Stories from Emona I (2008)"/></div>
-        <div class="player_buttons">
-          <div class="player_button player_button--backward js-backward"><i class="fa fa-backward"></i></div>
-          <div class="player_button player_button--play js-play"><i class="fa fa-play"></i></div>
-          <div class="player_button player_button--forward js-forward"><i class="fa fa-forward"></i></div>
+        <div class="console">
+          <div class="cover">
+            <div class="cover__thumbnail"><img src="img/cover.jpg" alt="MAYA FILIPIČ - Stories from Emona I (2008)"/></div>
+          </div>
+          <div class="control__buttons">
+            <button class="control__button js-backward"><i class="fa fa-backward"></i></button>
+            <button class="control__button js-play"><i class="fa fa-play"></i></button>
+            <button class="control__button js-forward"><i class="fa fa-forward"></i></button>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
   <script type="text/javascript" src="js/app.bundle.js"></script></body>
 </html>
