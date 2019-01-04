@@ -5,23 +5,17 @@
 }
 
 html {
-  @include query(xs-only) {
+  @media only screen and (max-width: 576px) {
     font-size: 80%;
   }
-
-  @include query(sm-only) {
+  @media only screen and (max-width: 768px) {
     font-size: 90%;
   }
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  height: 100vh;
-  overflow: hidden;
-  background: linear-gradient(to right, $pink--level-2, $pink--level-1);
-
+  margin: 0;
   font-family: $font--lobster;
+  background: $pink-darker;  /* fallback for old browsers */
+  background: linear-gradient(to right, $pink-darker, $pink-lighter);
 }

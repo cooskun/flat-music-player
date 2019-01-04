@@ -1,0 +1,43 @@
+%cover-animation-setup {
+  transform: translateY(-5%) scale(1.2);
+  transform-origin: 50% 100%;
+  will-change: transform;
+  transition: all 0.5s linear;
+
+  img {
+    animation: rotating 10s linear infinite paused;
+    will-change: transform;
+  }
+}
+
+%cover-animation-start {
+  transform: translateY(-7%) scale(1.3);
+
+  img {
+    animation-play-state: running;
+  }
+}
+
+%button-animation-setup {
+  background-color: transparent;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover,
+  &.is-hover {
+    background-color: $gray;
+
+    i {
+      color: $white;
+    }
+  }
+
+  i {
+    color: $gray;
+    font-size: 2rem;
+  }
+}
+
+%button-reset {
+  border: 0;
+  outline: 0;
+}

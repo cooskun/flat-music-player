@@ -8,31 +8,41 @@ html(lang="en")
     link(rel="author" href="human.txt")
     title Flat Music Player
   body
-   
-    section.player.js-player
-      
-      .player_info
-        .player_info_inner
-          //- Song information
-          h1.player_title Stories from Emona I
-          h2.player_subtitle maya filipic
-          
-          //- Progressbar
-          .player_progressbar
-            .player_progressbar_progress.js-progress
-      
-      .player_console
-        //- CD cover
-        .player_cover
-          img(src="../img/cover.jpg", alt="MAYA FILIPIČ - Stories from Emona I (2008)")
 
-        //- Control panel
-        .player_buttons
-          div(class="player_button player_button--backward js-backward")
-            i.fa.fa-backward
-          div(class="player_button player_button--play js-play")
-            i.fa.fa-play
-          div(class="player_button player_button--forward js-forward")
-            i.fa.fa-forward
+    section.loading.js-loading
+      h2.loading__text LOADING...
+
+    //- Scene
+    main.scene
+      
+      //- Player
+      section.player.js-player
+        
+        //- Player status: Song, Singer and Progressbar
+        .status
+          .status__inner
+            //- Song information
+            h1.status__title Stories from Emona I
+            h2.status__subtitle maya filipic
+            
+            //- Progressbar
+            .progressbar
+              .progressbar__progress.js-progress
+        
+        //- Player Console: Song Cover and Control Buttons
+        .console
+          //- CD cover
+          .cover
+            .cover__thumbnail
+              img(src="../img/cover.jpg", alt="MAYA FILIPIČ - Stories from Emona I (2008)")
+
+          //- Control Buttons
+          .control__buttons
+            button(class="control__button js-backward")
+              i.fa.fa-backward
+            button(class="control__button js-play")
+              i.fa.fa-play
+            button(class="control__button js-forward")
+              i.fa.fa-forward
   
   
