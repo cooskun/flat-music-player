@@ -147,15 +147,29 @@ function fireProgressbar() {
   }
 }
 
+const defaultBackward = () => seekBack(5)
+const defaultForward = () => seekForward(5)
+
 // Plays/pauses the sound
 elPlay.addEventListener('click', playOrPause)
 
+// Space control for Play/Pause
+document.addEventListener('keyup', e => {
+  if (e.code === 'Space') {
+    playOrPause()
+  } else if (e.code === 'ArrowRight') {
+    defaultForward()
+  } else if (e.code === 'ArrowLeft') {
+    defaultBackward()
+  }
+})
+
 // Go back 5 seconds in sound
 elBackward.addEventListener('click', () => {
-  seekBack(5)
+  defaultBackward()
 })
 
 // Go forward 5 seconds in soun
 elForward.addEventListener('click', () => {
-  seekForward(5)
+  defaultForward()
 })
